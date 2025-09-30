@@ -1,0 +1,5 @@
+project_id = "wvtojojfwkryzixshczr"
+[functions.validate-login]
+verify_jwt = false
+[functions.fetch-sheet]
+verify_jwt = false
