@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Award, Lightbulb } from 'lucide-react';
+import { ExternalLink, Award, Lightbulb, X, ChevronRight } from 'lucide-react';
 import { CandidateData } from '../services/googleSheets';
 import { Badge } from './ui/badge';
 
@@ -176,22 +176,60 @@ export const CandidateViewCorner: React.FC<CandidateViewCornerProps> = ({ candid
           <span className="text-sm font-medium">{candidate.phone}</span>
         </div>
 
-        <div className="flex justify-between items-center relative">
-          <div 
-            className="flex items-center gap-1 cursor-pointer px-1 rounded bg-yellow-50"
-            onMouseEnter={() => setShowQuestionsInfo(true)}
-            onMouseLeave={() => setShowQuestionsInfo(false)}
+        <div className="flex justify-between items-center">
+          <button
+            className={`flex items-center gap-1 px-3 py-1 text-xs font-medium rounded transition-all duration-200 ${
+              showQuestionsInfo
+                ? 'bg-yellow-200 text-yellow-800 hover:bg-yellow-300 border border-yellow-400'
+                : 'bg-yellow-50 text-yellow-700 hover:bg-yellow-100 border border-yellow-200'
+            }`}
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowQuestionsInfo(!showQuestionsInfo);
+            }}
           >
-            <span className="text-sm text-muted-foreground">Reference Questions</span>
-            <Lightbulb className="h-3 w-3 text-muted-foreground" />
-          </div>
-          {showQuestionsInfo && candidate.questions && candidate.questions !== 'NA' && (
-            <div className="absolute z-10 bg-background border border-border rounded-lg p-4 shadow-lg right-0 top-full mt-1 w-80 max-w-sm">
-              <h4 className="font-semibold text-base mb-3">Reference Questions</h4>
-              <p className="text-sm text-foreground whitespace-pre-wrap">{candidate.questions}</p>
-            </div>
+            <Lightbulb className="h-3 w-3" />
+            <span>Reference Questions</span>
+            {showQuestionsInfo ? (
+              <ChevronRight className="h-3 w-3" />
+            ) : (
+              <Lightbulb className="h-3 w-3 opacity-0" />
+            )}
+          </button>
+
+          {showQuestionsInfo && (
+            <button
+              className="flex items-center gap-1 px-2 py-1 text-xs font-medium text-yellow-700 hover:text-yellow-800 bg-yellow-50 hover:bg-yellow-100 border border-yellow-200 rounded transition-colors"
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowQuestionsInfo(false);
+              }}
+            >
+              <X className="h-3 w-3" />
+              Hide
+            </button>
           )}
         </div>
+
+        {showQuestionsInfo && candidate.questions && candidate.questions !== 'NA' && (
+          <div className="mt-3 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+            <div className="flex items-start justify-between mb-2">
+              <h4 className="font-semibold text-sm text-foreground">Reference Questions</h4>
+              <button
+                className="p-1 hover:bg-yellow-100 rounded transition-colors"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowQuestionsInfo(false);
+                }}
+              >
+                <X className="h-3 w-3 text-gray-500" />
+              </button>
+            </div>
+            <div className="max-h-32 overflow-y-auto pr-2">
+              <p className="text-sm text-foreground whitespace-pre-wrap">{candidate.questions}</p>
+            </div>
+          </div>
+        )}
       </div>
 
       {candidate.gdrivelink && (
