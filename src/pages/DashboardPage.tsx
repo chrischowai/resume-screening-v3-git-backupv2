@@ -362,17 +362,17 @@ export const DashboardPage: React.FC = () => {
                 </div>
 
                 {/* Right side - Action buttons */}
-                <div className="flex items-center space-x-4">
-                  <Button
-                    variant="outline"
-                    onClick={handleGoBack}
-                    className="h-11 px-6 font-semibold bg-white/80 border-border/50 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-all duration-200 shadow-sm hover:shadow-md backdrop-blur-sm"
-                  >
-                    <ArrowLeft className="h-4 w-4 mr-2" />
-                    Back to Previous Page
-                  </Button>
+                <div className="flex flex-col items-end">
+                  <div className="flex items-center space-x-3">
+                    <Button
+                      variant="outline"
+                      onClick={handleGoBack}
+                      className="h-11 px-6 font-semibold bg-white/80 border-border/50 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-all duration-200 shadow-sm hover:shadow-md backdrop-blur-sm"
+                    >
+                      <ArrowLeft className="h-4 w-4 mr-2" />
+                      Back to Previous Page
+                    </Button>
 
-                  <div className="flex flex-col items-end">
                     <Button
                       variant="outline"
                       onClick={handleRefresh}
@@ -382,12 +382,12 @@ export const DashboardPage: React.FC = () => {
                       <RefreshCw className={`h-4 w-4 mr-2 ${refreshing ? 'animate-spin' : ''}`} />
                       {refreshing ? 'Syncing...' : 'Refresh Data'}
                     </Button>
-                    <div className="flex items-center space-x-1 mt-1">
-                      <Clock className="w-3 h-3 text-muted-foreground" />
-                      <span className="text-xs text-muted-foreground">
-                        Latest Updated: {formatTime(new Date())}
-                      </span>
-                    </div>
+                  </div>
+                  <div className="flex items-center space-x-1 mt-1">
+                    <Clock className="w-3 h-3 text-muted-foreground" />
+                    <span className="text-xs text-muted-foreground">
+                      Latest Updated: {formatTime(new Date())}
+                    </span>
                   </div>
                 </div>
               </div>
