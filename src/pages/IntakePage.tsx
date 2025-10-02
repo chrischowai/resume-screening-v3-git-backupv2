@@ -145,7 +145,7 @@ export const IntakePage: React.FC = () => {
                       </h1>
                       <Sparkles className="w-5 h-5 text-primary animate-pulse" />
                     </div>
-                    <p className="text-sm text-muted-foreground font-medium">Enterprise Talent Acquisition Platform • AI-Powered Candidate Matching</p>
+                    <p className="text-sm text-muted-foreground font-medium"> AI-Powered Talent Acquisition Platform </p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
