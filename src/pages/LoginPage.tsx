@@ -40,7 +40,7 @@ export const LoginPage: React.FC = () => {
       {/* Background Pattern Overlay */}
       <div className="absolute inset-0 bg-black/20"></div>
 
-      <div className="relative z-10 min-h-screen flex items-center justify-center p-4 lg:p-8" style={{ transform: 'scale(1.3)', transformOrigin: 'center' }}>
+      <div className="relative z-10 min-h-screen flex items-center justify-center p-4 lg:p-8" style={{ transform: 'scale(1.05)', transformOrigin: 'center' }}>
         <div className="w-full max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             {/* Left Side - Introduction Content */}
